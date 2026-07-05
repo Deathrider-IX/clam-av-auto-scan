@@ -25,6 +25,8 @@ sudo apt update -y
 while true; do
 	echo 
 	echo -ne "${MAGENTA}${BOLD}Type 'scan' to run CLAM-AV, or 'q' to quit:${RESET}" 
+	echo
+	echo "\n"
 	echo -e "${GREEN}CTRL+C to quit ${RESET}"
 
 	read command
