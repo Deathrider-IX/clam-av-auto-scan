@@ -7,6 +7,7 @@ RED="\e[31m"
 GREEN="\e[32m"
 BOLD="\e[1m"
 RESET="\e[0m"
+MAGENTA="\e[35m"
 
 set -uo pipefail
 
@@ -23,8 +24,10 @@ sudo apt update -y
 # loop 
 while true; do
 	echo 
-	read -rp "Type 'scan' to run CLAM-AV, or 'q' to quit:" command 
-	
+	echo -ne "${MAGENTA}${BOLD}Type 'scan' to run CLAM-AV, or 'q' to quit:${RESET}" 
+	echo -e "${GREEN}CTRL+C to quit ${RESET}"
+
+	read command
 	if 
 
 	[[ "$command" == "q" || "$command" == "quit" ]]; then
@@ -47,15 +50,16 @@ while true; do
 	if command -v clamscan &> /dev/null; then
 
 		echo -ne "${RED}${BOLD}RUNNING FRESHCLAM[/[][/]${RESET}"  
-		cat clam.txt
-		sudo freshclam #  >> Results_scan.txt 2>&1
+		
+		sudo freshclam  #  >> Results_scan.txt 2>&1
 		#grep -i "FOUND" Results_scan.txt 
 		#grep -i "error\|denied" Results_scan.txt
 		#echo -e "${RED} //CHECK >> Results_scan.txt// ${RESET}"
 
 		echo -e "${GREEN}//scanning [DOWNLOADS] (auto-remove infected files)....${RESET}" 
 		echo -e "${GREEN} // CHECK >> Downloads_Scan.txt // ${RESET}"
-		clamscan -r --remove "$HOME/Downloads" # >> Downloads_scan_results 2>&1
+		#CHECKS FOR INFECTED FILES
+		clamscan -i -r --remove "$HOME/Downloads" # >> Downloads_scan_results 2>&1
 
 	       	# Warning automatic removal
 		echo -e "${GREEN}//scanning [HOME] [TMP] ,[VAR][TMP]....${RESET}"  
