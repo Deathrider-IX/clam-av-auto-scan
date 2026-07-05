@@ -24,12 +24,10 @@ sudo apt update -y
 # loop 
 while true; do
 	echo 
-	echo -ne "${MAGENTA}${BOLD}Type 'scan' to run CLAM-AV, or 'q' to quit:${RESET}" 
+	read -rp  "${MAGENTA}${BOLD}Type 'scan' to run CLAM-AV, or 'q' to quit:${RESET}" command
 	echo
-	echo "\n"
 	echo -e "${GREEN}CTRL+C to quit ${RESET}"
-
-	read command
+	
 	if 
 
 	[[ "$command" == "q" || "$command" == "quit" ]]; then
