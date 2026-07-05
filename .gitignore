@@ -1,0 +1,26 @@
+# ClamAV Working Directory
+clamav/
+
+# Scan Results and Logs
+*_scan_results*
+*_results*
+Downloads_scan_results
+Home_results.txt
+Results_scan.txt
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Temporary Files
+*.tmp
+*.log
+*.swp
+*.swo
+*~
+
+# IDE Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
